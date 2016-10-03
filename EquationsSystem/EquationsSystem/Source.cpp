@@ -2,8 +2,9 @@
 #include<vector>
 #include<ctime>
 using namespace std;
-const int PS_RAND = 100;
-const double EPS = 1e-4;
+const int PS_RAND = 10;
+const int OUT_PRES = 5;
+const double EPS = 1e-5;
 const int INF = 1000000000;
 vector<vector<double> > operator *(vector<vector<double> > a, vector<vector<double> > b) {
 	vector<vector<double> > ans(a.size(), vector<double> (b[0].size(), 0));
@@ -18,6 +19,7 @@ vector<vector<double> > operator *(vector<vector<double> > a, vector<vector<doub
 	}
 	return ans;
 }
+
 class EqSys 
 {
 	vector<vector<double> > sys;
@@ -25,8 +27,21 @@ class EqSys
 	vector<double> x;
 	const int RAND_ADD = 10;
 	const int MIT = 1000;
+	
 public:
 	EqSys (int n, int type);
+	double Residual(vector<double> rez) {
+		vector<vector<double> > prRez(rez.size(), vector<double>(1,0));
+		for (int i = 0; i < prRez.size(); i++) {
+			prRez[i][0] = rez[i];
+		}
+		vector<vector<double> > Ax = sys*prRez;
+		vector<double> kAx(Ax.size());
+		for (int i = 0; i < Ax.size(); i++) {
+			kAx[i] = Ax[i][0];
+		}
+		return norm(kAx, b);
+	}
 	vector<double> Gauss() {
 		vector<vector<double> > a=sys;
 		for (int i = 0; i < a.size(); i++)
@@ -53,6 +68,7 @@ public:
 		vector<double> xn = x0;
 		int it = 0;
 		do {
+			xn = x0;
 			for (int i = 0; i < sys.size(); i++) {
 				double sum = 0;
 				for (int j = 0; j < sys[i].size(); j++) {
@@ -62,9 +78,10 @@ public:
 				}
 				x0[i] = (b[i] - sum) / sys[i][i];
 			}
-			swap(x0, xn);
+			//swap(x0, xn);
 			it++;
 		} while (!checkEps(x0, xn) && it<MIT);
+		cout << "Iter: " << it << endl;
 		return x0;
 	}
 	vector<double> Yakobi() {
@@ -84,15 +101,40 @@ public:
 			swap(x0, xn);
 			it++;
 		} while (!checkEps(x0, xn) && it<MIT);
+		cout << "Iter: " << it << endl;
 		return x0;
 	}
-private:
-	bool checkEps(vector<double> xn, vector<double> x0) {
-		double norm = 0;
-		for (int i = 0; i < xn.size(); i++) {
-			norm += sqrt((xn[i] - x0[i])*(xn[i] - x0[i]));
+	void out() {
+		cout << "A|b:" << endl;
+		for (int i = 0; i < sys.size(); i++) {
+			for (int j = 0; j < sys[i].size(); j++) {
+				cout.precision(OUT_PRES);
+				cout.width(OUT_PRES*2+1);
+				cout <<fixed<< sys[i][j];
+			}
+			cout << " | ";
+			cout.precision(OUT_PRES);
+			cout.width(OUT_PRES*2+1);
+			cout << fixed << b[i]<<endl;
 		}
-		return norm < EPS;
+		cout << "x:" << endl;
+		for (int i = 0; i < x.size(); i++) {
+			cout.precision(OUT_PRES);
+			cout.width(OUT_PRES * 2 + 1);
+			cout << fixed << x[i];
+		}
+		cout << endl;
+	}
+private:
+	double norm(const vector<double> &xn,const vector<double> &x0) {
+		double ans= 0;
+		for (int i = 0; i < xn.size(); i++) {
+			ans += sqrt((xn[i] - x0[i])*(xn[i] - x0[i]));
+		}
+		return ans;
+	}
+	bool checkEps(vector<double> xn, vector<double> x0) {
+		return norm(xn,x0) < EPS;
 	}
 	int gaussAll(vector < vector<double> > a, vector<double> & ans) {
 		int n = (int)a.size();
@@ -141,7 +183,7 @@ private:
 			double sum = 0;
 			for (int j = 0; j < n; j++) {
 				sys[i][j] = double(rand()) / double(RAND_MAX)+double(rand()%PS_RAND) * (rand()%2 ? 1 : -1);
-				sum += sys[i][j];
+				sum += fabs(sys[i][j]);
 			}
 			sys[i][i] = sum;
 		}
@@ -151,7 +193,7 @@ private:
 			double sum = 0;
 			for (int j = 0; j < n; j++) {
 				sys[i][j] = 1.0 / double(i + j + 2);
-				sum += sys[i][j];
+				sum += fabs(sys[i][j]);
 			}
 			sys[i][i] = sum;
 		}
@@ -174,13 +216,39 @@ private:
 	}
 };
 
+void outVd(vector<double> a) {
+	for (int i = 0; i < a.size(); i++) {
+		cout.precision(OUT_PRES);
+		cout.width(OUT_PRES * 2 + 1);
+		cout << fixed << a[i]<<" ";
+	}
+	cout << endl;
+}
 
 int main() {
+	
+	cout << "Enter number of equations" << endl;
+	int n;
+	cin >> n;
+	cout << "Enter type (1 for random 2 for Gilbert matrix)" << endl;
+	int type;
+	cin >> type;
+	freopen("output.txt", "w", stdout);
 	srand(time(NULL));
-	EqSys A(2, 1);
+	EqSys A(n, type);
+	A.out();
+	cout << "Gauss" << endl;
 	vector<double> ansG = A.Gauss();
+	outVd(ansG);
+	cout << "Residual: " << A.Residual(ansG) << endl;
+	cout << "Yakobi" << endl;
 	vector<double> ansYa = A.Yakobi();
+	outVd(ansYa);
+	cout << "Residual: " << A.Residual(ansYa) << endl;
+	cout << "Zeydel" << endl;
 	vector<double> ansZe = A.Zeydel();
+	outVd(ansZe);
+	cout << "Residual: " << A.Residual(ansZe) << endl;
 	return 0;
 }
 

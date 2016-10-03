@@ -1,22 +1,30 @@
-﻿Build started 03.10.2016 0:27:21.
+﻿Build started 03.10.2016 19:04:08.
      1>Project "C:\Users\Den\Documents\GitHub\Number_methods\EquationsSystem\EquationsSystem\EquationsSystem.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Source.cpp
          Source.cpp
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(10): warning C4018: '<': signed/unsigned mismatch
      1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(11): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(13): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(32): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(46): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(56): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(58): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(75): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(77): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(12): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(14): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(35): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(40): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(47): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(61): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(72): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(74): warning C4018: '<': signed/unsigned mismatch
      1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(92): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(160): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(167): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(171): warning C4018: '<': signed/unsigned mismatch
-     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(179): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(94): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(109): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(110): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(121): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(131): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(202): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(209): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(213): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(220): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(237): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+     1>c:\users\den\documents\github\number_methods\equationssystem\equationssystem\source.cpp(236): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+         c:\program files (x86)\windows kits\10\include\10.0.10150.0\ucrt\stdio.h(240): note: see declaration of 'freopen'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Den\Documents\GitHub\Number_methods\EquationsSystem\Debug\EquationsSystem.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Den\Documents\GitHub\Number_methods\EquationsSystem\Debug\EquationsSystem.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Den\Documents\GitHub\Number_methods\EquationsSystem\Debug\EquationsSystem.lib" /MACHINE:X86 Debug\Source.obj
          EquationsSystem.vcxproj -> C:\Users\Den\Documents\GitHub\Number_methods\EquationsSystem\Debug\EquationsSystem.exe
@@ -24,4 +32,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.94
+Time Elapsed 00:00:01.02
