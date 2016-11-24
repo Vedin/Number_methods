@@ -26,7 +26,7 @@ class EqSys
 	vector<double> b;
 	vector<double> x;
 	const int RAND_ADD = 10;
-	const int MIT = 1000;
+	const int MIT = 10000;
 	
 public:
 	EqSys (int n, int type);
@@ -192,10 +192,10 @@ private:
 		for (int i = 0; i < n; i++) {
 			double sum = 0;
 			for (int j = 0; j < n; j++) {
-				sys[i][j] = 1.0 / double(i + j + 2);
+				sys[i][j] = 1.0 / double(i + j + 1);
 				sum += fabs(sys[i][j]);
 			}
-			sys[i][i] = sum;
+			//sys[i][i] = sum;
 		}
 	}
 	void genans() {
